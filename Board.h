@@ -4,13 +4,11 @@
 
 class Board{
     public:
-        Board(){
-
-        }
+        Board(){}
         Board(int height, int width){
             int xMax, yMax;
             getmaxyx(stdscr, yMax, xMax);
-            board_win = newwin(height, width, (yMax/2)-(height/2), (xMax/2)-(width/2));
+            board_win = newwin(height, width, (yMax/2)-(height/2), (xMax/3)-(width/3));
             init();
         }
 
@@ -29,7 +27,7 @@ class Board{
 
         int getInput(){
             keypad(board_win, true);
-            halfdelay(5);
+            halfdelay(3);
             return wgetch(board_win);
         }
         void clear(){
@@ -39,6 +37,10 @@ class Board{
 
         void refresh(){
             wrefresh(board_win);
+        }
+
+        void erase(){
+            erase();
         }
     private:
         WINDOW *board_win;
